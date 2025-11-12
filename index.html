@@ -1,162 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Read.CV Clone</title>
-    <!-- meta for SEO-->
-    <meta name="description" content="description for seo">
-    <meta name="keywords" content="keyword for seo">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="your Name">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daniela Picão – Sr. Product Designer</title>
 
-    <!-- Open graph-->
-    <meta property="og:title" content="open-graph title">
-    <meta property="og:description" content="open-graph description.">
-    <meta property="og:image" content="images/open-graph.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://example.com">
+  <meta name="description" content="Portfolio of Daniela Picão, Sr. Product Designer in London, UK. Passionate about design systems and operations." />
+  <meta name="keywords" content="Daniela Picão, Product Design, Design Systems, UX, UI, London" />
+  <meta name="author" content="Daniela Picão" />
+  <meta property="og:title" content="Daniela Picão – Sr. Product Designer" />
+  <meta property="og:description" content="Senior Designer with over a decade of experience creating digital experiences. Focused on design systems, efficiency, and empathy." />
+  <meta property="og:image" content="images/avatar.png" />
+  <meta property="og:url" content="https://bento.me/danielapicao" />
 
-    <!-- favicon -->
-    <link rel="icon" href="images/favicon.png" type="image/png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'label-primary': '#eeeeee',
-                        'label-secondary': '#bbbbbb',
-                        'label-tertiary': '#888888',
-                    }
-                }
-            }
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+          },
+          colors: {
+            'text-primary': '#1a1a1a',
+            'text-secondary': '#4a4a4a',
+            'text-tertiary': '#7a7a7a',
+            'bg-main': '#ffffff',
+            'divider': '#e5e5e5',
+          }
         }
-    </script>
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+    h1, h2, h3 {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    h2 {
+      font-size: 1.125rem;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+    h2:hover {
+      color: #000;
+    }
+
+    /* Collapsible animation */
+    section > .collapsible-content {
+      max-height: 1000px;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    section.collapsed > .collapsible-content {
+      max-height: 0;
+    }
+
+    /* Divider */
+    section {
+      border-bottom: 1px solid #e5e5e5;
+      padding-bottom: 1.5rem;
+    }
+
+    /* Download button */
+    #download-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #000;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+      z-index: 100;
+    }
+    #download-btn:hover {
+      background-color: #333;
+    }
+  </style>
 </head>
-<body class="bg-[#222222] text-label-secondary text-base leading-relaxed">
 
-    <div class="max-w-[580px] mx-auto my-20 px-4 sm:px-0">
-        <header class="mb-12">
-            <div class="flex gap-6 items-center">
-                <img src="images/avatar.png" alt="your name" class="w-[92px] h-[92px] rounded-full" loading="lazy" title="your name">
-                <div class="">
-                    <h1 class="text-xl mb-2 text-label-primary">Daniela Picão</h1>
-                    <p class="text-label-secondary">Senior Product Designer</p>
-                </div>
-            </div>
-        </header>
+<body class="bg-bg-main text-text-secondary text-base leading-relaxed">
 
-        <main>
-            <section class="mb-10">
-                <h2 class="text-label-primary mb-2">About</h2>
-                <p class="leading-[1.8] text-label-secondary">I’m a Senior Designer with over a decade of experience creating digital experiences across diverse roles in the industry. Passionate about design systems and operations, I strive to drive efficiency, consistency, and scalability while nurturing an empathetic culture that empowers teams to excel.</section>
-            
-            <section class="mb-10">
-                <h2 class="text-label-primary mb-2">Experience</h2>
-                <div class="flex flex-col md:flex-row gap-2 mb-9">
-                    <div class="text-label-tertiary min-w-[180px]">Apr 2023 — Present</div>
-                    <div class="">
-                        <a href="#" class="text-label-primary mb-1 inline-flex items-center gap-1 hover:text-white transition-colors duration-300">Staff Software Engineer at Figma
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 16.5 16.5 7.5m0 0h-6.75m6.75 0v6.75" /></svg></a>
-                        <p class="mb-2">Tokyo, Japan</p>
-                        <p>Developed backend systems for collaborative tools like FigJam and optimized API performance for real-time collaboration.</p>
-                    </div>
-                </div>
-                <div class="flex flex-col md:flex-row gap-2 mb-9">
-                    <div class="text-label-tertiary min-w-[180px]">2021 — 2023</div>
-                    <div class="">
-                        <a href="#" class="text-label-primary mb-1 inline-flex items-center gap-1 hover:text-white transition-colors duration-300">Front-End Engineer at Shopify
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 16.5 16.5 7.5m0 0h-6.75m6.75 0v6.75" /></svg></a>
-                        <p class="mb-2">Singapore</p>
-                        <p>Built React-based storefront templates and improved checkout workflows, reducing load times by 25%.</p>
-                    </div>
-                </div>
-                <div class="flex flex-col md:flex-row gap-2 mb-9">
-                    <div class="text-label-tertiary min-w-[180px]">2021 — 2023</div>
-                    <div class="">
-                        <a href="#" class="text-label-primary mb-1 inline-flex items-center gap-1 hover:text-white transition-colors duration-300">Backend Engineer at Tencent
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 16.5 16.5 7.5m0 0h-6.75m6.75 0v6.75" /></svg></a>
-                        <p class="mb-2">Shenzhen, China</p>
-                        <p>Developed scalable backend systems for WeChat Pay and optimized database queries for faster transaction processing.</p>
-                    </div>
-                </div>
-                <div class="flex flex-col md:flex-row gap-2 mb-9">
-                    <div class="text-label-tertiary min-w-[180px]">2021 — 2023</div>
-                    <div class="">
-                        <a href="#" class="text-label-primary mb-1 inline-flex items-center gap-1 hover:text-white transition-colors duration-300">Junior Software Engineer at Grab
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 16.5 16.5 7.5m0 0h-6.75m6.75 0v6.75" /></svg></a>
-                        <p class="mb-2">Jakarta, Indonesia</p>
-                        <p>Implemented ride-booking algorithms and enhanced GrabFood delivery tracking systems, improving user experience.</p>
-                    </div>
-                </div>    
-                
-            </section>
+  <button id="download-btn">📄 Download PDF</button>
 
-            <section class="mb-10" id="education">
-                <h2 class="text-label-primary mb-2">Education</h2>
-                <div class="flex flex-col md:flex-row gap-2 mb-9">
-                    <div class="text-label-tertiary min-w-[180px]">2011 — 2015</div>
-                    <div class="">
-                        <p class="text-label-primary mb-1">Bachelor of Science in Computer Science</p>
-                        <p class="mb">National University of Singapore</p>
-                    </div>
-                </div>
-            </section>
+  <div id="profile-content" class="max-w-[650px] mx-auto my-20 px-6 sm:px-0">
+    <header class="mb-12">
+      <div class="flex gap-6 items-center">
+        <img src="images/avatar.png" alt="Daniela Picão" class="w-[96px] h-[96px] rounded-full shadow-md" loading="lazy" />
+        <div>
+          <h1 class="text-2xl mb-1 text-text-primary">Daniela Picão</h1>
+          <p class="text-text-secondary">Sr. Product Designer in London, UK</p>
+          <a href="https://bento.me/danielapicao" class="text-[#0066cc] text-sm hover:underline">bento.me/danielapicao</a>
+        </div>
+      </div>
+    </header>
 
-            <section class="mb-10" id="side-projects">
-                <h2 class="text-label-primary mb-2">Side-Projects</h2>
-                <div class="flex flex-col md:flex-row gap-2 mb-9">
-                    <div class="text-label-tertiary min-w-[180px]">Ongoing</div>
-                    <div class="">
-                        <a href="#" class="text-label-primary mb-1 inline-flex items-center gap-1 hover:text-white transition-colors duration-300">CodeSnip
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 16.5 16.5 7.5m0 0h-6.75m6.75 0v6.75" /></svg></a>
-                        <p>A tool to save and share code snippets, built with React and Firebase.</p>
-                    </div>
-                </div>
-                <div class="flex flex-col md:flex-row gap-2 mb-9">
-                    <div class="text-label-tertiary min-w-[180px]">2024</div>
-                    <div class="">
-                        <a href="#" class="text-label-primary mb-1 inline-flex items-center gap-1 hover:text-white transition-colors duration-300">DevTracker
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 16.5 16.5 7.5m0 0h-6.75m6.75 0v6.75" /></svg></a>
-                        <p>A task tracker for developers with GitHub integration.</p>
-                    </div>
-                </div>
-            </section>
+    <main class="space-y-10">
 
-            <section id="contact">
-                <h2 class="text-label-primary mb-2">Contact</h2>
-                <div class="flex gap-2 mb-1">
-                    <div class="text-label-tertiary min-w-[100px] sm:min-w-[180px]">Email</div>
-                    <a href="#" class="text-label-primary mb-1 inline-flex items-center gap-1 hover:text-white transition-colors duration-300">hey@hiroshi.com
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 16.5 16.5 7.5m0 0h-6.75m6.75 0v6.75" /></svg></a>   
-                </div>
-                <div class="flex gap-2 mb-1">
-                    <div class="text-label-tertiary min-w-[100px] sm:min-w-[180px]">Github</div>
-                    <a href="#" class="text-label-primary mb-1 inline-flex items-center gap-1 hover:text-white transition-colors duration-300">hiroshi
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 16.5 16.5 7.5m0 0h-6.75m6.75 0v6.75" /></svg></a>   
-                </div>
-                <div class="flex gap-2 mb-1">
-                    <div class="text-label-tertiary min-w-[100px] sm:min-w-[180px]">Twitter</div>
-                    <a href="#" class="text-label-primary mb-1 inline-flex items-center gap-1 hover:text-white transition-colors duration-300">hiroshi
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 16.5 16.5 7.5m0 0h-6.75m6.75 0v6.75" /></svg></a>   
-                </div>
-                <div class="flex gap-2 mb-1">
-                    <div class="text-label-tertiary min-w-[100px] sm:min-w-[180px]">Linkedin</div>
-                    <a href="#" class="text-label-primary mb-1 inline-flex items-center gap-1 hover:text-white transition-colors duration-300">in/hiroshi
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 16.5 16.5 7.5m0 0h-6.75m6.75 0v6.75" /></svg></a>   
-                </div>
-                <div class="flex gap-2">
-                    <div class="text-label-tertiary min-w-[100px] sm:min-w-[180px]">Substack</div>
-                    <a href="#" class="text-label-primary mb-1 inline-flex items-center gap-1 hover:text-white transition-colors duration-300">hiroshi
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 16.5 16.5 7.5m0 0h-6.75m6.75 0v6.75" /></svg></a>   
-                </div>
-            </section>
-            
-        </main>
-    </div>
-    <script src="script.js"></script>
+      <!-- ABOUT -->
+      <section>
+        <h2 class="text-text-primary toggle-btn">About ▾</h2>
+        <div class="collapsible-content mt-2">
+          <p class="leading-[1.8] text-text-secondary">
+            I’m a Senior Designer with over seven years of experience creating digital experiences across diverse roles in the industry.
+            Passionate about design systems and operations, I strive to drive efficiency, consistency, and scalability while nurturing
+            an empathetic culture that empowers teams to excel.
+          </p>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section>
+        <h2 class="text-text-primary toggle-btn">Contact ▾</h2>
+        <div class="collapsible-content mt-2 space-y-1">
+          <div><span class="text-text-tertiary w-[100px] inline-block">Portfolio</span> <a href="https://bento.me/danielapicao" class="text-[#0066cc] hover:underline">danielapicao ↗</a></div>
+          <div><span class="text-text-tertiary w-[100px] inline-block">LinkedIn</span> <a href="https://linkedin.com/in/danielapicao" class="text-[#0066cc] hover:underline">danielapicao ↗</a></div>
+          <div><span class="text-text-tertiary w-[100px] inline-block">Email</span> <a href="mailto:danielapicao.work@gmail.com" class="text-[#0066cc] hover:underline">danielapicao.work@gmail.com ↗</a></div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section>
+        <h2 class="text-text-primary toggle-btn">Work Experience ▾</h2>
+        <div class="collapsible-content mt-3 space-y-8">
+          <div>
+            <div class="text-text-tertiary mb-1">2023 — Now</div>
+            <p class="text-text-primary font-medium">Senior Product Designer – Design System at <a href="https://www.soldo.com/en-eu/" class="text-[#0066cc] hover:underline">Soldo</a></p>
+            <p class="text-sm text-text-tertiary mb-2">London · Remote</p>
+            <p>
+              Contributing to the Experience Foundation Team to build and evolve the Prisma Design System. Leading design operations,
+              mentoring designers, establishing metrics, and ensuring scalable consistency across all levels.
+            </p>
+          </div>
+
+          <div>
+            <div class="text-text-tertiary mb-1">2022 — 2023</div>
+            <p class="text-text-primary font-medium">UI Designer & Design System Contributor at <a href="https://www.soldo.com/en-eu/" class="text-[#0066cc] hover:underline">Soldo</a></p>
+            <p class="text-sm text-text-tertiary mb-2">London · Remote</p>
+            <p>
+              Designed interfaces for finance products and contributed to the federated design system model, improving cross-squad efficiency and UI consistency.
+            </p>
+          </div>
+
+          <div>
+            <div class="text-text-tertiary mb-1">2017 — 2022</div>
+            <p class="text-text-primary font-medium">UX/UI Designer at Play Consulting</p>
+            <p class="text-sm text-text-tertiary mb-2">London · Hybrid</p>
+            <p>Worked with clients like PWC, Unilever, and NHS on enterprise learning and engagement platforms.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CERTIFICATIONS -->
+      <section>
+        <h2 class="text-text-primary toggle-btn">Certifications ▾</h2>
+        <div class="collapsible-content mt-2">
+          <ul class="list-disc ml-5 space-y-2">
+            <li>"Advanced Design Systems" – Smashing Magazine (2025)</li>
+            <li>Make Design Systems People Want to Use – DS University (2024)</li>
+            <li>Generative AI for Everyone – DeepLearning.AI (2024)</li>
+            <li>Advanced Product Design – Figma Academy (2023)</li>
+            <li>Scaling Design Systems – Dan Mall (2023)</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section>
+        <h2 class="text-text-primary toggle-btn">Education ▾</h2>
+        <div class="collapsible-content mt-2">
+          <div class="text-text-tertiary mb-1">2009 — 2012</div>
+          <p class="text-text-primary font-medium">Bachelor’s Degree in Design</p>
+          <p class="text-sm text-text-tertiary">University of Aveiro</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Collapsible animation
+    document.querySelectorAll(".toggle-btn").forEach((title) => {
+      title.addEventListener("click", () => {
+        const section = title.parentElement;
+        const content = section.querySelector(".collapsible-content");
+        section.classList.toggle("collapsed");
+        title.textContent = section.classList.contains("collapsed")
+          ? title.textContent.replace("▾", "▸")
+          : title.textContent.replace("▸", "▾");
+      });
+    });
+
+    // Generate PDF (trimmed)
+    document.getElementById("download-btn").addEventListener("click", () => {
+      const content = document.getElementById("profile-content").cloneNode(true);
+
+      // Keep only 3 entries per section
+      content.querySelectorAll("section").forEach((section) => {
+        const divs = section.querySelectorAll("div:not(:has(h2))");
+        if (divs.length > 3) {
+          divs.forEach((div, i) => i >= 3 && div.remove());
+        }
+        const lis = section.querySelectorAll("ul li");
+        if (lis.length > 3) {
+          lis.forEach((li, i) => i >= 3 && li.remove());
+        }
+      });
+
+      const opt = {
+        margin: 0.5,
+        filename: "Daniela-Picao-Portfolio.pdf",
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
+      };
+      html2pdf().from(content).set(opt).save();
+    });
+  </script>
 </body>
-</html> 
+</html>
+
