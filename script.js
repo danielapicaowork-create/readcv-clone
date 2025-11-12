@@ -1,62 +1,69 @@
-// Add smooth scrolling for navigation
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
-// Add animation to skill items
-const skillItems = document.querySelectorAll('.skill-item');
-skillItems.forEach(item => {
-    item.addEventListener('mouseenter', () => {
-        item.style.transform = 'translateY(-5px)';
-    });
-    
-    item.addEventListener('mouseleave', () => {
-        item.style.transform = 'translateY(0)';
-    });
-});
-
-// Add fade-in animation for sections when they come into view
+<script>
+// Smoothly fade sections into view on scroll
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
 }, observerOptions);
 
-// Observe all sections
 document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
+  observer.observe(section);
 });
 
-// Add hover effect to social links
-document.querySelectorAll('.social-links a').forEach(link => {
-    link.addEventListener('mouseenter', () => {
-        link.style.transform = 'translateY(-2px)';
-    });
-    
-    link.addEventListener('mouseleave', () => {
-        link.style.transform = 'translateY(0)';
-    });
+// Fade-in animation CSS
+const style = document.createElement('style');
+style.innerHTML = `
+  section {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+document.head.appendChild(style);
+
+// Collapsible sections (keep from previous version)
+document.querySelectorAll(".toggle-btn").forEach(title => {
+  title.addEventListener("click", () => {
+    const section = title.parentElement;
+    section.classList.toggle("collapsed");
+    title.textContent = section.classList.contains("collapsed")
+      ? title.textContent.replace("▾", "▸")
+      : title.textContent.replace("▸", "▾");
+  });
 });
 
-// Add smooth hover effect to skill items
-document.querySelectorAll('.skill-item').forEach(item => {
-    item.addEventListener('mouseenter', () => {
-        item.style.transform = 'translateY(-1px)';
-    });
-    
-    item.addEventListener('mouseleave', () => {
-        item.style.transform = 'translateY(0)';
-    });
-}); 
+// PDF generation logic (keep if you want the button)
+document.getElementById("download-btn")?.addEventListener("click", () => {
+  const content = document.getElementById("profile-content").cloneNode(true);
+  content.querySelectorAll("section").forEach(section => {
+    const divs = section.querySelectorAll("div:not(:has(h2))");
+    if (divs.length > 3) {
+      divs.forEach((div, i) => i >= 3 && div.remove());
+    }
+    const lis = section.querySelectorAll("ul li");
+    if (lis.length > 3) {
+      lis.forEach((li, i) => i >= 3 && li.remove());
+    }
+  });
+
+  const opt = {
+    margin: 0.5,
+    filename: "Daniela-Picao-Portfolio.pdf",
+    image: { type: "jpeg", quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
+  };
+  html2pdf().from(content).set(opt).save();
+});
+</script>
