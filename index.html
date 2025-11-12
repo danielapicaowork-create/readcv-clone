@@ -69,7 +69,21 @@
       padding-bottom: 1.5rem;
     }
 
-    /* Download button */
+    /* Download button under About */
+    #download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #000;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 1rem;
+      text-decoration: none;
+    }
     #download-btn:hover {
       background-color: #333;
     }
@@ -94,24 +108,15 @@
 
       <!-- ABOUT -->
       <section>
-        <h2 class="text-gray-900 cursor-pointer toggle-btn">About ▾</h2>
+        <h2 class="text-text-primary toggle-btn">About ▾</h2>
         <div class="collapsible-content mt-2">
-          <p class="leading-relaxed text-gray-600">
+          <p class="leading-[1.8] text-text-secondary">
             I’m a Senior Designer with over seven years of experience creating digital experiences across diverse roles in the industry.
             Passionate about design systems and operations, I strive to drive efficiency, consistency, and scalability while nurturing
             an empathetic culture that empowers teams to excel.
           </p>
-
-          <!-- Download CV button -->
-          <button id="download-btn" class="mt-4 flex items-center gap-2 bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition">
-            Download CV <span>📥</span>
-          </button>
+          <button id="download-btn">Download CV 📥</button>
         </div>
-      </section>
-
-      <!-- CONTACT, EXPERIENCE, CERTIFICATIONS, EDUCATION sections remain unchanged -->
-    </main>
-  </div>
       </section>
 
       <!-- CONTACT -->
@@ -140,87 +145,4 @@
 
           <div>
             <div class="text-text-tertiary mb-1">2022 — 2023</div>
-            <p class="text-text-primary font-medium">UI Designer & Design System Contributor at <a href="https://www.soldo.com/en-eu/" class="text-[#0066cc] hover:underline">Soldo</a></p>
-            <p class="text-sm text-text-tertiary mb-2">London · Remote</p>
-            <p>
-              Designed interfaces for finance products and contributed to the federated design system model, improving cross-squad efficiency and UI consistency.
-            </p>
-          </div>
-
-          <div>
-            <div class="text-text-tertiary mb-1">2017 — 2022</div>
-            <p class="text-text-primary font-medium">UX/UI Designer at Play Consulting</p>
-            <p class="text-sm text-text-tertiary mb-2">London · Hybrid</p>
-            <p>Worked with clients like PWC, Unilever, and NHS on enterprise learning and engagement platforms.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- CERTIFICATIONS -->
-      <section>
-        <h2 class="text-text-primary toggle-btn">Certifications ▾</h2>
-        <div class="collapsible-content mt-2">
-          <ul class="list-disc ml-5 space-y-2">
-            <li>"Advanced Design Systems" – Smashing Magazine (2025)</li>
-            <li>Make Design Systems People Want to Use – DS University (2024)</li>
-            <li>Generative AI for Everyone – DeepLearning.AI (2024)</li>
-            <li>Advanced Product Design – Figma Academy (2023)</li>
-            <li>Scaling Design Systems – Dan Mall (2023)</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- EDUCATION -->
-      <section>
-        <h2 class="text-text-primary toggle-btn">Education ▾</h2>
-        <div class="collapsible-content mt-2">
-          <div class="text-text-tertiary mb-1">2009 — 2012</div>
-          <p class="text-text-primary font-medium">Bachelor’s Degree in Design</p>
-          <p class="text-sm text-text-tertiary">University of Aveiro</p>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <script>
-    // Collapsible animation
-    document.querySelectorAll(".toggle-btn").forEach((title) => {
-      title.addEventListener("click", () => {
-        const section = title.parentElement;
-        const content = section.querySelector(".collapsible-content");
-        section.classList.toggle("collapsed");
-        title.textContent = section.classList.contains("collapsed")
-          ? title.textContent.replace("▾", "▸")
-          : title.textContent.replace("▸", "▾");
-      });
-    });
-
-    // Generate PDF (trimmed)
-    document.getElementById("download-btn").addEventListener("click", () => {
-      const content = document.getElementById("profile-content").cloneNode(true);
-
-      // Keep only 3 entries per section
-      content.querySelectorAll("section").forEach((section) => {
-        const divs = section.querySelectorAll("div:not(:has(h2))");
-        if (divs.length > 3) {
-          divs.forEach((div, i) => i >= 3 && div.remove());
-        }
-        const lis = section.querySelectorAll("ul li");
-        if (lis.length > 3) {
-          lis.forEach((li, i) => i >= 3 && li.remove());
-        }
-      });
-
-      const opt = {
-        margin: 0.5,
-        filename: "Daniela-Picao-Portfolio.pdf",
-        image: { type: "jpeg", quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
-      };
-      html2pdf().from(content).set(opt).save();
-    });
-  </script>
-</body>
-</html>
-
+            <p class="text-text-primary font-medium">UI Designer & Design System Contributor at <a href="https://www.soldo.com/en-eu/" class="text-[#0066cc] hover:underline">Soldo<
