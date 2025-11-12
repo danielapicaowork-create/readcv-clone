@@ -5,9 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Daniela Picão – Sr. Product Designer</title>
 
+  <!-- meta for SEO-->
   <meta name="description" content="Portfolio of Daniela Picão, Sr. Product Designer in London, UK. Passionate about design systems and operations." />
   <meta name="keywords" content="Daniela Picão, Product Design, Design Systems, UX, UI, London" />
+  <meta name="robots" content="index, follow" />
   <meta name="author" content="Daniela Picão" />
+
+  <!-- Open Graph -->
   <meta property="og:title" content="Daniela Picão – Sr. Product Designer" />
   <meta property="og:description" content="Senior Designer with over a decade of experience creating digital experiences. Focused on design systems, efficiency, and empathy." />
   <meta property="og:image" content="images/avatar.png" />
@@ -15,216 +19,160 @@
 
   <link rel="icon" href="images/favicon.png" type="image/png" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
-          },
           colors: {
-            'text-primary': '#1a1a1a',
-            'text-secondary': '#4a4a4a',
-            'text-tertiary': '#7a7a7a',
-            'bg-main': '#ffffff',
-            'divider': '#e5e5e5',
+            'label-primary': '#eeeeee',
+            'label-secondary': '#bbbbbb',
+            'label-tertiary': '#888888',
           }
         }
       }
     }
   </script>
-
-  <style>
-    body {
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    }
-    h1, h2, h3 {
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-    h2 {
-      font-size: 1.125rem;
-      cursor: pointer;
-      transition: color 0.2s ease;
-    }
-    h2:hover {
-      color: #000;
-    }
-
-    /* Collapsible animation */
-    section > .collapsible-content {
-      max-height: 1000px;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-    section.collapsed > .collapsible-content {
-      max-height: 0;
-    }
-
-    /* Divider */
-    section {
-      border-bottom: 1px solid #e5e5e5;
-      padding-bottom: 1.5rem;
-    }
-
-    /* Download button */
-    #download-btn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: #000;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-size: 14px;
-      cursor: pointer;
-      transition: background 0.2s;
-      z-index: 100;
-    }
-    #download-btn:hover {
-      background-color: #333;
-    }
-  </style>
 </head>
 
-<body class="bg-bg-main text-text-secondary text-base leading-relaxed">
-
-  <div id="profile-content" class="max-w-[650px] mx-auto my-20 px-6 sm:px-0">
+<body class="bg-[#222222] text-label-secondary text-base leading-relaxed">
+  <div class="max-w-[580px] mx-auto my-20 px-4 sm:px-0">
     <header class="mb-12">
       <div class="flex gap-6 items-center">
-        <img src="images/avatar.png" alt="Daniela Picão" class="w-[96px] h-[96px] rounded-full shadow-md" loading="lazy" />
+        <img src="images/avatar.png" alt="Daniela Picão" class="w-[92px] h-[92px] rounded-full" loading="lazy" />
         <div>
-          <h1 class="text-2xl mb-1 text-text-primary">Daniela Picão</h1>
-          <p class="text-text-secondary">Sr. Product Designer in London, UK</p>
-          <a href="https://bento.me/danielapicao" class="text-[#0066cc] text-sm hover:underline">bento.me/danielapicao</a>
+          <h1 class="text-xl mb-2 text-label-primary">Daniela Picão</h1>
+          <p class="text-label-secondary">Sr. Product Designer · London, UK</p>
         </div>
       </div>
     </header>
 
-    <main class="space-y-10">
-
-      <!-- ABOUT -->
-      <section>
-        <h2 class="text-text-primary toggle-btn">About ▾</h2>
-        <div class="collapsible-content mt-2">
-          <p class="leading-[1.8] text-text-secondary">
-            I’m a Senior Designer with over seven years of experience creating digital experiences across diverse roles in the industry.
-            Passionate about design systems and operations, I strive to drive efficiency, consistency, and scalability while nurturing
-            an empathetic culture that empowers teams to excel.
-          </p>
-          <!-- Moved download button here -->
-          <button id="download-btn">📄 Download PDF</button>
-        </div>
+    <main>
+      <section class="mb-10">
+        <h2 class="text-label-primary mb-2">About</h2>
+        <p class="leading-[1.8] text-label-secondary">
+          I’m a Senior Designer with over a decade of experience creating digital experiences across diverse roles in the industry.
+          Passionate about design systems and operations, I strive to drive efficiency, consistency, and scalability while nurturing
+          an empathetic culture that empowers teams to excel.
+        </p>
       </section>
 
-      <!-- CONTACT -->
-      <section>
-        <h2 class="text-text-primary toggle-btn">Contact ▾</h2>
-        <div class="collapsible-content mt-2 space-y-1">
-          <div><span class="text-text-tertiary w-[100px] inline-block">Portfolio</span> <a href="https://bento.me/danielapicao" class="text-[#0066cc] hover:underline">danielapicao ↗</a></div>
-          <div><span class="text-text-tertiary w-[100px] inline-block">LinkedIn</span> <a href="https://linkedin.com/in/danielapicao" class="text-[#0066cc] hover:underline">danielapicao ↗</a></div>
-          <div><span class="text-text-tertiary w-[100px] inline-block">Email</span> <a href="mailto:danielapicao.work@gmail.com" class="text-[#0066cc] hover:underline">danielapicao.work@gmail.com ↗</a></div>
-        </div>
-      </section>
+      <section class="mb-10">
+        <h2 class="text-label-primary mb-2">Work Experience</h2>
 
-      <!-- EXPERIENCE -->
-      <section>
-        <h2 class="text-text-primary toggle-btn">Work Experience ▾</h2>
-        <div class="collapsible-content mt-3 space-y-8">
+        <div class="flex flex-col md:flex-row gap-2 mb-9">
+          <div class="text-label-tertiary min-w-[180px]">2023 — Now</div>
           <div>
-            <div class="text-text-tertiary mb-1">2023 — Now</div>
-            <p class="text-text-primary font-medium">Senior Product Designer – Design System at <a href="https://www.soldo.com/en-eu/" class="text-[#0066cc] hover:underline">Soldo</a></p>
-            <p class="text-sm text-text-tertiary mb-2">London · Remote</p>
+            <a href="https://www.soldo.com/en-eu/" class="text-label-primary hover:text-white inline-flex items-center gap-1">Senior Product Designer – Design System at Soldo</a>
+            <p class="mb-2">London | Remote</p>
             <p>
-              Contributing to the Experience Foundation Team to build and evolve the Prisma Design System. Leading design operations,
-              mentoring designers, establishing metrics, and ensuring scalable consistency across all levels.
+              Contributing as part of the Experience Foundation Team to build and evolve the Prisma Design System. Leading projects,
+              mentoring designers, establishing design metrics, and optimizing workflows for scalable, consistent design operations.
             </p>
           </div>
+        </div>
 
+        <div class="flex flex-col md:flex-row gap-2 mb-9">
+          <div class="text-label-tertiary min-w-[180px]">2022 — 2023</div>
           <div>
-            <div class="text-text-tertiary mb-1">2022 — 2023</div>
-            <p class="text-text-primary font-medium">UI Designer & Design System Contributor at <a href="https://www.soldo.com/en-eu/" class="text-[#0066cc] hover:underline">Soldo</a></p>
-            <p class="text-sm text-text-tertiary mb-2">London · Remote</p>
+            <a href="https://www.soldo.com/en-eu/" class="text-label-primary hover:text-white inline-flex items-center gap-1">UI Designer & Design System Contributor at Soldo</a>
+            <p class="mb-2">London | Remote</p>
             <p>
-              Designed interfaces for finance products and contributed to the federated design system model, improving cross-squad efficiency and UI consistency.
+              Created interfaces for Finance and Accounting squads, and co-developed component libraries and documentation for a federated
+              design system model, improving design consistency and workflow efficiency.
             </p>
           </div>
+        </div>
 
+        <div class="flex flex-col md:flex-row gap-2 mb-9">
+          <div class="text-label-tertiary min-w-[180px]">2017 — 2022</div>
           <div>
-            <div class="text-text-tertiary mb-1">2017 — 2022</div>
-            <p class="text-text-primary font-medium">UX/UI Designer at Play Consulting</p>
-            <p class="text-sm text-text-tertiary mb-2">London · Hybrid</p>
-            <p>Worked with clients like PWC, Unilever, and NHS on enterprise learning and engagement platforms.</p>
+            <span class="text-label-primary">UX/UI Designer at Play Consulting</span>
+            <p class="mb-2">London | Hybrid</p>
+            <p>
+              Worked with clients like PWC, Unilever, Mars, NHS, and KPMG to design mobile and web experiences that supported rapid product
+              validation and adoption through game theory principles.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-2 mb-9">
+          <div class="text-label-tertiary min-w-[180px]">2016 — 2017</div>
+          <div>
+            <a href="https://vimeo.com/muugenstudios" class="text-label-primary hover:text-white inline-flex items-center gap-1">Graphic Designer / Video Editor Freelancer at Muugen Studio</a>
+            <p class="mb-2">London | Remote</p>
+            <p>Provided graphic design, production, and video editing services to clients seeking brand identity development.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-2 mb-9">
+          <div class="text-label-tertiary min-w-[180px]">2014 — 2016</div>
+          <div>
+            <span class="text-label-primary">Web Designer at Fuse</span>
+            <p class="mb-2">London | On-site</p>
+            <p>Designed and implemented custom UX solutions for Fuse’s learning platform to enhance enterprise client engagement.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-2 mb-9">
+          <div class="text-label-tertiary min-w-[180px]">2013 — 2014</div>
+          <div>
+            <span class="text-label-primary">Digital Media Designer at Fuse</span>
+            <p class="mb-2">London | On-site</p>
+            <p>Created campaign assets, animations, and infographics for client marketing initiatives within the Fuse ecosystem.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-2 mb-9">
+          <div class="text-label-tertiary min-w-[180px]">2012</div>
+          <div>
+            <a href="http://www.tom-price.com/synthesis-detail" class="text-label-primary hover:text-white inline-flex items-center gap-1">Creative Assistant Internship at Tom Price</a>
+            <p class="mb-2">London | On-site</p>
+            <p>
+              Contributed to large-scale installations for global brands, including the PP Trysting Tree at Bloomberg London, gaining
+              hands-on experience in creative production and material transformation.
+            </p>
           </div>
         </div>
       </section>
 
-      <!-- CERTIFICATIONS -->
-      <section>
-        <h2 class="text-text-primary toggle-btn">Certifications ▾</h2>
-        <div class="collapsible-content mt-2">
-          <ul class="list-disc ml-5 space-y-2">
-            <li>"Advanced Design Systems" – Smashing Magazine (2025)</li>
-            <li>Make Design Systems People Want to Use – DS University (2024)</li>
-            <li>Generative AI for Everyone – DeepLearning.AI (2024)</li>
-            <li>Advanced Product Design – Figma Academy (2023)</li>
-            <li>Scaling Design Systems – Dan Mall (2023)</li>
-          </ul>
+      <section class="mb-10" id="education">
+        <h2 class="text-label-primary mb-2">Education</h2>
+        <div class="flex flex-col md:flex-row gap-2 mb-9">
+          <div class="text-label-tertiary min-w-[180px]">2009 — 2012</div>
+          <div>
+            <a href="https://www.ua.pt" class="text-label-primary hover:text-white">Bachelor’s Degree in Design</a>
+            <p>University of Aveiro</p>
+          </div>
         </div>
       </section>
 
-      <!-- EDUCATION -->
-      <section>
-        <h2 class="text-text-primary toggle-btn">Education ▾</h2>
-        <div class="collapsible-content mt-2">
-          <div class="text-text-tertiary mb-1">2009 — 2012</div>
-          <p class="text-text-primary font-medium">Bachelor’s Degree in Design</p>
-          <p class="text-sm text-text-tertiary">University of Aveiro</p>
+      <section class="mb-10" id="certifications">
+        <h2 class="text-label-primary mb-2">Certifications</h2>
+        <ul class="list-disc ml-5 space-y-2">
+          <li><a href="https://designsystem.university/courses/make-design-systems-people-want-to-use" class="hover:text-white text-label-primary">Make Design Systems People Want to Use – Design System University (2024)</a></li>
+          <li>Workshop Design System Planning & Process – Into Design Systems (2024)</li>
+          <li>Generative AI for Everyone – DeepLearning.AI (2024)</li>
+          <li>Advanced Product Design Tactics – Figma Academy (2023)</li>
+          <li>Scaling Design Systems – Dan Mall (2023)</li>
+        </ul>
+      </section>
+
+      <section id="contact">
+        <h2 class="text-label-primary mb-2">Contact</h2>
+        <div class="flex gap-2 mb-1">
+          <div class="text-label-tertiary min-w-[100px] sm:min-w-[180px]">Email</div>
+          <a href="mailto:danielapicao.work@gmail.com" class="text-label-primary hover:text-white">danielapicao.work@gmail.com</a>
+        </div>
+        <div class="flex gap-2 mb-1">
+          <div class="text-label-tertiary min-w-[100px] sm:min-w-[180px]">LinkedIn</div>
+          <a href="https://linkedin.com/in/danielapicao/" class="text-label-primary hover:text-white">linkedin.com/in/danielapicao</a>
+        </div>
+        <div class="flex gap-2">
+          <div class="text-label-tertiary min-w-[100px] sm:min-w-[180px]">Bento</div>
+          <a href="https://bento.me/danielapicao" class="text-label-primary hover:text-white">bento.me/danielapicao</a>
         </div>
       </section>
     </main>
   </div>
-
-  <script>
-    // Collapsible animation
-    document.querySelectorAll(".toggle-btn").forEach((title) => {
-      title.addEventListener("click", () => {
-        const section = title.parentElement;
-        const content = section.querySelector(".collapsible-content");
-        section.classList.toggle("collapsed");
-        title.textContent = section.classList.contains("collapsed")
-          ? title.textContent.replace("▾", "▸")
-          : title.textContent.replace("▸", "▾");
-      });
-    });
-
-    // Generate PDF (trimmed)
-    document.getElementById("download-btn").addEventListener("click", () => {
-      const content = document.getElementById("profile-content").cloneNode(true);
-
-      // Keep only 3 entries per section
-      content.querySelectorAll("section").forEach((section) => {
-        const divs = section.querySelectorAll("div:not(:has(h2))");
-        if (divs.length > 3) {
-          divs.forEach((div, i) => i >= 3 && div.remove());
-        }
-        const lis = section.querySelectorAll("ul li");
-        if (lis.length > 3) {
-          lis.forEach((li, i) => i >= 3 && li.remove());
-        }
-      });
-
-      const opt = {
-        margin: 0.5,
-        filename: "Daniela-Picao-Portfolio.pdf",
-        image: { type: "jpeg", quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
-      };
-      html2pdf().from(content).set(opt).save();
-    });
-  </script>
 </body>
 </html>
