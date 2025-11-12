@@ -2,90 +2,124 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
- <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <title>Daniela Picão | CV</title>
- <meta name="description" content="Portfolio of Daniela Picão, Sr. Product Designer in London, UK. Passionate about design systems and operations." />
- <meta name="keywords" content="Daniela Picão, Product Design, Design Systems, UX, UI, London" />
- <meta name="author" content="Daniela Picão" />
- <meta property="og:title" content="Daniela Picão | CV" />
- <meta property="og:description" content="Senior Designer with over a decade of experience creating digital experiences. Focused on design systems, efficiency, and empathy." />
- <meta property="og:image" content="images/profilePhoto.jpg" />
- <meta property="og:url" content="https://bento.me/danielapicao" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Daniela Picão | CV</title>
 
-  <link rel="icon" href="images/favicon-32x32.png" type="image/png" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<meta name="description" content="Portfolio of Daniela Picão, Sr. Product Designer in London, UK. Passionate about design systems and operations." />
+<meta name="keywords" content="Daniela Picão, Product Design, Design Systems, UX, UI, London" />
+<meta name="author" content="Daniela Picão" />
+<meta property="og:title" content="Daniela Picão | CV" />
+<meta property="og:description" content="Senior Designer with over a decade of experience creating digital experiences. Focused on design systems, efficiency, and empathy." />
+<meta property="og:image" content="images/profilePhoto.jpg" />
+<meta property="og:url" content="https://bento.me/danielapicao" />
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
-          },
-          colors: {
-            'text-primary': '#1a1a1a',
-            'text-secondary': '#4a4a4a',
-            'text-tertiary': '#7a7a7a',
-            'bg-main': '#ffffff',
-            'divider': '#e5e5e5',
-          }
+<link rel="icon" href="images/favicon-32x32.png" type="image/png" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        },
+        colors: {
+          'text-primary': '#1a1a1a',
+          'text-secondary': '#4a4a4a',
+          'text-tertiary': '#7a7a7a',
+          'bg-main': '#ffffff',
+          'divider': '#e5e5e5',
         }
       }
     }
-  </script>
+  }
+</script>
 
-  <style>
-    body {
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    }
-    h1, h2, h3 {
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-    h2 {
-      font-size: 1.125rem;
-      cursor: pointer;
-      transition: color 0.2s ease;
-    }
-    h2:hover {
-      color: #000;
-    }
+<style>
+  body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+  h1, h2, h3 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  h2 {
+    font-size: 1.125rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  h2:hover {
+    color: #000;
+  }
 
-    /* Collapsible animation */
-    section > .collapsible-content {
-      max-height: 1000px;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-    section.collapsed > .collapsible-content {
-      max-height: 0;
-    }
+  /* Collapsible animation */
+  section > .collapsible-content {
+    max-height: 1000px;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  section.collapsed > .collapsible-content {
+    max-height: 0;
+  }
 
-    /* Divider */
-    section {
-      border-bottom: 1px solid #e5e5e5;
-      padding-bottom: 1.5rem;
-    }
+  /* Divider */
+  section {
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 1.5rem;
+  }
 
-    /* Download button */
-    #download-btn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: #000;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-size: 14px;
-      cursor: pointer;
-      transition: background 0.2s;
-      z-index: 100;
-    }
-    #download-btn:hover {
-      background-color: #333;
-    }
-  </style>
+  /* 🌈 Animated Rainbow Download Button */
+  #download-btn {
+    position: relative;
+    margin-top: 1.5rem;
+    padding: 12px 28px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333; /* dark grey text */
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  #download-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 2px; /* stroke thickness */
+    border-radius: 10px;
+    background: linear-gradient(
+      90deg,
+      #ff0055,
+      #ffae00,
+      #00ff6a,
+      #00c3ff,
+      #7a00ff,
+      #ff00c8,
+      #ff0055
+    );
+    background-size: 400% 400%;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    animation: rainbow 5s linear infinite;
+    z-index: -1;
+  }
+
+  @keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 400% 50%; }
+  }
+
+  #download-btn:hover::before {
+    filter: brightness(1.2);
+  }
+</style>
 </head>
 
 <body class="bg-bg-main text-text-secondary text-base leading-relaxed">
@@ -106,19 +140,19 @@
 
       <!-- ABOUT -->
       <section>
-          <p class="leading-[1.8] text-text-secondary">
-            I’m a Senior Designer with over seven years of experience creating digital experiences across diverse roles in the industry.
-            Passionate about design systems and operations, I strive to drive efficiency, consistency, and scalability while nurturing
-            an empathetic culture that empowers teams to excel.
-          </p>
-          <button id="download-btn">📄 Download CV</button>
+        <p class="leading-[1.8] text-text-secondary">
+          I’m a Senior Designer with over seven years of experience creating digital experiences across diverse roles in the industry.
+          Passionate about design systems and operations, I strive to drive efficiency, consistency, and scalability while nurturing
+          an empathetic culture that empowers teams to excel.
+        </p>
+        <button id="download-btn">📄 Download CV</button>
       </section>
 
       <!-- CONTACT -->
       <section>
-       <div><span class="text-text-tertiary w-[100px] inline-block">Portfolio</span> <a href="https://bento.me/danielapicao" class="text-[#0066cc] hover:underline">danielapicao ↗</a></div>
-       <div><span class="text-text-tertiary w-[100px] inline-block">LinkedIn</span> <a href="https://linkedin.com/in/danielapicao" class="text-[#0066cc] hover:underline">danielapicao ↗</a></div>
-       <div><span class="text-text-tertiary w-[100px] inline-block">Email</span> <a href="mailto:danielapicao.work@gmail.com" class="text-[#0066cc] hover:underline">danielapicao.work@gmail.com ↗</a></div>
+        <div><span class="text-text-tertiary w-[100px] inline-block">Portfolio</span> <a href="https://bento.me/danielapicao" class="text-[#0066cc] hover:underline">danielapicao ↗</a></div>
+        <div><span class="text-text-tertiary w-[100px] inline-block">LinkedIn</span> <a href="https://linkedin.com/in/danielapicao" class="text-[#0066cc] hover:underline">danielapicao ↗</a></div>
+        <div><span class="text-text-tertiary w-[100px] inline-block">Email</span> <a href="mailto:danielapicao.work@gmail.com" class="text-[#0066cc] hover:underline">danielapicao.work@gmail.com ↗</a></div>
       </section>
 
       <!-- EXPERIENCE -->
