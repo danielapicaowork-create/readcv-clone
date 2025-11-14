@@ -35,138 +35,266 @@
   </script>
 
   <style>
-  /* === TYPOGRAPHY & GOLDEN RATIO READABILITY === */
-  body {
-    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    font-size: 1rem;
-    line-height: 1.618; /* Golden ratio line height for optimal readability */
-    letter-spacing: 0.012em; /* Slight positive spacing for clarity */
-    color: #4a4a4a;
-  }
+    /* === TYPOGRAPHY & GOLDEN RATIO READABILITY === */
+    :root {
+      --base-font-size: 16px;
+      --golden-line: 1.618;
+    }
 
-  h1, h3 {
-    font-weight: 600;
-    letter-spacing: -0.015em;
-    line-height: 1.3; /* Balanced for headings */
-  }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 1rem;
+      line-height: var(--golden-line); /* golden ratio line height */
+      letter-spacing: 0.012em;
+      color: #4a4a4a;
+      background: var(--bg-main, #ffffff);
+    }
 
-  h2 {
-    font-size: 1.15rem;
-    font-weight: 400;
-    letter-spacing: -0.005em; /* Slightly tightened for elegance */
-    line-height: 1.4;
-    color: #1a1a1a;
-    margin-bottom: 0.9rem;
-  }
+    h1, h3 {
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      line-height: 1.3;
+    }
 
-  p {
-    line-height: 1.618;
-    letter-spacing: 0.01em;
-    margin-bottom: 1rem;
-  }
+    /* Headers (larger, not bolder) */
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 400; /* not bolder */
+      letter-spacing: -0.005em;
+      line-height: 1.4;
+      color: #1a1a1a;
+      margin-bottom: 0.9rem;
+    }
 
-  ul {
-    line-height: 1.55;
-    letter-spacing: 0.008em;
-  }
+    p {
+      line-height: var(--golden-line);
+      letter-spacing: 0.01em;
+      margin-bottom: 1rem;
+    }
 
-  section {
-    padding-bottom: 1.25rem;
-    margin-bottom: 1.75rem;
-  }
+    ul {
+      line-height: 1.55;
+      letter-spacing: 0.008em;
+    }
 
-  /* 🌈 Rainbow Button (Say hi) */
-  .rainbow-btn {
-    position: relative;
-    z-index: 1;
-    background: transparent;
-    color: #333;
-    overflow: hidden;
-  }
-  .rainbow-btn::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    padding: 2px;
-    border-radius: 10px;
-    background: linear-gradient(
-      90deg,
-      #ff0055,
-      #ffae00,
-      #00ff6a,
-      #00c3ff,
-      #7a00ff,
-      #ff00c8,
-      #ff0055
-    );
-    background-size: 400% 400%;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    animation: rainbow 5s linear infinite;
-    z-index: -1;
-  }
-  @keyframes rainbow {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 400% 50%; }
-  }
-    
-    /* --- Tighten spacing between role and location lines --- */
-  .text-text-primary.font-medium + .text-sm.text-text-tertiary {
-  margin-top: 0.6rem;   /* add a little top space for breathing */
-  margin-bottom: 1rem; /* smaller than the default mb-3 (0.75rem) */
-  line-height: 1.4;
-}  
-  .leading-snug {
-    line-height: 1.7;
-  }
-    
-  .rainbow-btn:hover::before {
-    filter: brightness(1.2);
-  }
+    section {
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
 
-  /* 🩶 Clean neutral button (Download resume) */
-  .clean-btn {
-    background: transparent;
-    border: none;
-    color: #1a1a1a;
-    transition: color 0.2s ease-in-out;
-  }
-  .clean-btn:hover {
-    color: #555;
-  }
-</style>
+    /* tighten spacing between role and location lines (all blocks) */
+    .text-text-primary.font-medium + .text-sm.text-text-tertiary {
+      margin-top: -0.1rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.35;
+    }
 
+    /* Buttons (top) */
+    .rainbow-btn {
+      position: relative;
+      z-index: 1;
+      background: transparent;
+      color: #333;
+      overflow: hidden;
+    }
+    .rainbow-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 2px;
+      border-radius: 10px;
+      background: linear-gradient(
+        90deg,
+        #ff0055,
+        #ffae00,
+        #00ff6a,
+        #00c3ff,
+        #7a00ff,
+        #ff00c8,
+        #ff0055
+      );
+      background-size: 400% 400%;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: rainbow 5s linear infinite;
+      z-index: -1;
+    }
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 400% 50%; }
+    }
+    .rainbow-btn:hover::before { filter: brightness(1.2); }
+
+    /* Download resume: light grey background only, no stroke */
+    #download-btn {
+      background: #f3f4f6;
+      border: none;
+      color: #1a1a1a;
+      transition: background-color 0.12s ease;
+    }
+    #download-btn:hover { background: #e8e8ea; }
+
+    /* === GALLERY / THUMBNAIL STRIP (constrained to profile-content width) === */
+    .gallery-strip {
+      margin-top: 1.25rem;
+      position: relative;
+      overflow: hidden;
+      padding-bottom: 0.85rem;
+    }
+
+    .gallery-track {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      padding: 0 0.25rem;
+    }
+
+    .gallery-track::-webkit-scrollbar { height: 8px; }
+    .gallery-track::-webkit-scrollbar-thumb {
+      background: #d9d9d9;
+      border-radius: 6px;
+    }
+
+    .thumb {
+      flex: 0 0 auto;
+      width: min(280px, 45%); /* responsive thumb width, smaller on narrow screens */
+      height: 160px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #111;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform-origin: center;
+      transition: transform .25s ease;
+    }
+
+    .thumb:active img,
+    .thumb:focus img,
+    .thumb:hover img { transform: scale(1.02); }
+
+    /* small progress / divider line like screenshot */
+    .gallery-divider {
+      position: relative;
+      height: 4px;
+      background: linear-gradient(#e6e6e6, #e6e6e6);
+      margin-top: 0.6rem;
+      border-radius: 2px;
+    }
+
+    /* Modal (shared for all galleries) */
+    .gallery-modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1200;
+      background: rgba(0,0,0,0.65);
+      padding: 24px;
+    }
+    .gallery-modal.open { display: flex; }
+
+    .gallery-modal__frame {
+      max-width: 1100px;
+      width: 100%;
+      max-height: 90vh;
+      background: #000;
+      border-radius: 10px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-modal__img {
+      max-width: 100%;
+      max-height: 88vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .gallery-modal__close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      display: inline-grid;
+      place-items: center;
+      background: rgba(255,255,255,0.95);
+      border: none;
+      cursor: pointer;
+    }
+
+    .gallery-modal__nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.95);
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      display: inline-grid;
+      place-items: center;
+      cursor: pointer;
+    }
+    .gallery-modal__nav.prev { left: 12px; }
+    .gallery-modal__nav.next { right: 12px; }
+
+    /* adapt modal for smaller screens */
+    @media (max-width: 640px) {
+      .thumb { height: 120px; width: min(70vw, 200px); }
+      .gallery-modal__frame { border-radius: 6px; padding: 8px; }
+      .gallery-modal__nav { width: 36px; height: 36px; }
+    }
+  </style>
 </head>
 
 <body class="bg-bg-main text-text-secondary text-base leading-relaxed">
   <div id="profile-content" class="max-w-[650px] mx-auto my-20 px-6 sm:px-0">
 
     <header class="mb-12">
-  <div class="flex gap-6 items-center">
-    <img src="images/profilePhoto.jpg" alt="Daniela Picão" class="w-[132px] h-[132px] rounded-full" loading="lazy" />
-    <div class="flex-1">
-      <h1 class="text-2xl mb-1 text-text-primary">Daniela Picão</h1>
-      <p class="text-text-secondary mb-2">Sr. Product Designer in London, UK</p>
+      <div class="flex gap-6 items-center">
+        <img src="images/profilePhoto.jpg" alt="Daniela Picão" class="w-[132px] h-[132px] rounded-full" loading="lazy" />
+        <div class="flex-1">
+          <h1 class="text-2xl mb-1 text-text-primary">Daniela Picão</h1>
+          <p class="text-text-secondary mb-2">Sr. Product Designer in London, UK</p>
 
-      <div class="flex gap-4 mt-3">
-        <!-- Keep rainbow button as is -->
-        <a href="mailto:danielapicao.work@gmail.com"
-           class="rainbow-btn inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200">
-          Get in touch
-        </a>
+          <div class="flex gap-6 mt-3">
+            <!-- untouched rainbow button -->
+            <a href="mailto:danielapicao.work@gmail.com"
+               class="rainbow-btn inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200">
+              Get in touch
+            </a>
 
-        <!-- Clean neutral background for download button -->
-        <button id="download-btn"
-                class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg bg-[#f3f4f6] hover:bg-[#e5e7eb] text-text-primary transition-colors duration-200">
-          Download resume
-        </button>
+            <!-- Only the download button has the light background -->
+            <button id="download-btn"
+                    class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200">
+              Download resume
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</header>
+    </header>
 
     <main class="space-y-8">
+
       <!-- ABOUT -->
       <section>
         <p class="leading-[1.7] text-text-secondary">
@@ -197,7 +325,7 @@
         <h2 class="text-text-primary mb-5">Work Experience</h2>
         <div class="space-y-16"> <!-- Increased vertical spacing -->
 
-          <!-- Experience item: Soldo 2 -->
+          <!-- Experience item: Soldo (Senior) -->
           <div>
             <div class="flex flex-col sm:flex-row sm:items-start sm:gap-6">
               <div class="text-text-tertiary w-[190px] shrink-0 mb-1 sm:mb-0">2023 — Present</div>
@@ -221,11 +349,27 @@
                   <li>Documenting and standardising design system processes to enhance team efficiency.</li>
                   <li>Providing resources like patterns, best practices, and templates to simplify processes and save time.</li>
                 </ul>
+
+                <!-- gallery strip for Soldo Senior -->
+                <div class="gallery-strip" data-gallery="soldo-senior">
+                  <div class="gallery-track">
+                    <div class="thumb" tabindex="0" data-src="/images/Senior-Product-Designer-Design-System-at-Soldo-1.png" data-index="0">
+                      <img src="/images/Senior-Product-Designer-Design-System-at-Soldo-1.png" alt="Soldo senior 1" />
+                    </div>
+                    <div class="thumb" tabindex="0" data-src="/images/Senior-Product-Designer-Design-System-at-Soldo-2.png" data-index="1">
+                      <img src="/images/Senior-Product-Designer-Design-System-at-Soldo-2.png" alt="Soldo senior 2" />
+                    </div>
+                    <div class="thumb" tabindex="0" data-src="/images/Senior-Product-Designer-Design-System-at-Soldo-3.png" data-index="2">
+                      <img src="/images/Senior-Product-Designer-Design-System-at-Soldo-3.png" alt="Soldo senior 3" />
+                    </div>
+                  </div>
+                  <div class="gallery-divider" aria-hidden="true"></div>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- Experience item: Soldo 1 -->
+          <!-- Experience item: Soldo (UI) -->
           <div>
             <div class="flex flex-col sm:flex-row sm:items-start sm:gap-6">
               <div class="text-text-tertiary w-[190px] shrink-0 mb-1 sm:mb-0">2022 — 2023</div>
@@ -241,6 +385,22 @@
                 <p class="mb-3">
                   On the Design System side, I contributed to a federated model by strategically architecting component libraries, comprehensive design system documentation, and assisting fellow designers in streamlining their workflows and optimising their design processes.
                 </p>
+
+                <!-- gallery strip for Soldo UI -->
+                <div class="gallery-strip" data-gallery="soldo-ui">
+                  <div class="gallery-track">
+                    <div class="thumb" tabindex="0" data-src="/images/UI-Designer-and-Design-System-contributor-at-Soldo-1.png" data-index="0">
+                      <img src="/images/UI-Designer-and-Design-System-contributor-at-Soldo-1.png" alt="Soldo ui 1" />
+                    </div>
+                    <div class="thumb" tabindex="0" data-src="/images/UI-Designer-and-Design-System-contributor-at-Soldo-2.png" data-index="1">
+                      <img src="/images/UI-Designer-and-Design-System-contributor-at-Soldo-2.png" alt="Soldo ui 2" />
+                    </div>
+                    <div class="thumb" tabindex="0" data-src="/images/UI-Designer-and-Design-System-contributor-at-Soldo-3.png" data-index="2">
+                      <img src="/images/UI-Designer-and-Design-System-contributor-at-Soldo-3.png" alt="Soldo ui 3" />
+                    </div>
+                  </div>
+                  <div class="gallery-divider" aria-hidden="true"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -258,11 +418,33 @@
                 <p class="mb-3">
                   I collaborated with clients such as PWC, Unilever, Mars, NHS, and KPMG on B2B and B2C propositions, delivering native and progressive mobile app experiences, as well as prototypes to secure project&nbsp;buy-in.
                 </p>
+
+                <!-- gallery strip for Play (5 images) -->
+                <div class="gallery-strip" data-gallery="play">
+                  <div class="gallery-track">
+                    <div class="thumb" tabindex="0" data-src="/images/UXUI-Designer-at-Play-Consulting-1.png" data-index="0">
+                      <img src="/images/UXUI-Designer-at-Play-Consulting-1.png" alt="Play 1" />
+                    </div>
+                    <div class="thumb" tabindex="0" data-src="/images/UXUI-Designer-at-Play-Consulting-2.png" data-index="1">
+                      <img src="/images/UXUI-Designer-at-Play-Consulting-2.png" alt="Play 2" />
+                    </div>
+                    <div class="thumb" tabindex="0" data-src="/images/UXUI-Designer-at-Play-Consulting-3.png" data-index="2">
+                      <img src="/images/UXUI-Designer-at-Play-Consulting-3.png" alt="Play 3" />
+                    </div>
+                    <div class="thumb" tabindex="0" data-src="/images/UXUI-Designer-at-Play-Consulting-4.png" data-index="3">
+                      <img src="/images/UXUI-Designer-at-Play-Consulting-4.png" alt="Play 4" />
+                    </div>
+                    <div class="thumb" tabindex="0" data-src="/images/UXUI-Designer-at-Play-Consulting-5.png" data-index="4">
+                      <img src="/images/UXUI-Designer-at-Play-Consulting-5.png" alt="Play 5" />
+                    </div>
+                  </div>
+                  <div class="gallery-divider" aria-hidden="true"></div>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- Experience item: Muugen -->
+          <!-- Muugen (no gallery) -->
           <div>
             <div class="flex flex-col sm:flex-row sm:items-start sm:gap-6">
               <div class="text-text-tertiary w-[190px] shrink-0 mb-1 sm:mb-0">2016 — 2017</div>
@@ -279,7 +461,7 @@
             </div>
           </div>
 
-          <!-- Experience item: Fuse 2 -->
+          <!-- Fuse 2 -->
           <div>
             <div class="flex flex-col sm:flex-row sm:items-start sm:gap-6">
               <div class="text-text-tertiary w-[190px] shrink-0 mb-1 sm:mb-0">2014 — 2016</div>
@@ -293,7 +475,7 @@
             </div>
           </div>
 
-          <!-- Experience item: Fuse 1 -->
+          <!-- Fuse 1 -->
           <div>
             <div class="flex flex-col sm:flex-row sm:items-start sm:gap-6">
               <div class="text-text-tertiary w-[190px] shrink-0 mb-1 sm:mb-0">2013 — 2014</div>
@@ -307,15 +489,15 @@
             </div>
           </div>
 
-          <!-- Experience item: Tom Price -->
+          <!-- Tom Price (gallery) -->
           <div>
             <div class="flex flex-col sm:flex-row sm:items-start sm:gap-6">
               <div class="text-text-tertiary w-[190px] shrink-0 mb-1 sm:mb-0">2012 — 2012</div>
               <div class="flex-1">
-                <div class="flex-1">
                 <p class="text-text-primary font-medium leading-snug">
                   Creative Assistant Internship at
                   <a href="https://www.tom-price.com/" class="text-[#0066cc] hover:underline">Tom Price ↗</a>
+                </p>
                 <p class="text-sm text-text-tertiary mb-3">London | On-site</p>
                 <p class="mb-3">
                   I had the honor of joining Tom Price’s team, contributing to large-scale projects for private clients and global brands, while gaining hands-on experience in the creative process, including material selection and transformation.
@@ -323,6 +505,37 @@
                 <p class="mb-3">
                   One standout project was the <a href="http://www.tom-price.com/pp-trysting-tree-bloomberg" class="text-[#0066cc] hover:underline">PP Trysting Tree at Bloomberg London ↗</a></a> – a complex and dynamic semi-permanent installation spanning four glass meeting&nbsp;rooms.
                 </p>
+
+                <!-- gallery strip for Tom Price (8 images) -->
+                <div class="gallery-strip" data-gallery="tom-price">
+                  <div class="gallery-track">
+                    <div class="thumb" tabindex="0" data-src="/images/Creative-Assistant-Internship-at-Tom-Price-1.jpg" data-index="0">
+                      <img src="/images/Creative-Assistant-Internship-at-Tom-Price-1.jpg" alt="Tom Price 1" />
+                    </div>
+                    <div class="thumb" tabindex="0" data-src="/images/Creative-Assistant-Internship-at-Tom-Price-2.jpg" data-index="1">
+                      <img src="/images/Creative-Assistant-Internship-at-Tom-Price-2.jpg" alt="Tom Price 2" />
+                    </div>
+                    <div class="thumb" tabindex="0" data-src="/images/Creative-Assistant-Internship-at-Tom-Price-3.jpg" data-index="2">
+                      <img src="/images/Creative-Assistant-Internship-at-Tom-Price-3.jpg" alt="Tom Price 3" />
+                    </div>
+                    <div class="thumb" tabindex="0" data-src="/images/Creative-Assistant-Internship-at-Tom-Price-4.jpg" data-index="3">
+                      <img src="/images/Creative-Assistant-Internship-at-Tom-Price-4.jpg" alt="Tom Price 4" />
+                    </div>
+                    <div class="thumb" tabindex="0" data-src="/images/Creative-Assistant-Internship-at-Tom-Price-5.jpg" data-index="4">
+                      <img src="/images/Creative-Assistant-Internship-at-Tom-Price-5.jpg" alt="Tom Price 5" />
+                    </div>
+                    <div class="thumb" tabindex="0" data-src="/images/Creative-Assistant-Internship-at-Tom-Price-6.jpg" data-index="5">
+                      <img src="/images/Creative-Assistant-Internship-at-Tom-Price-6.jpg" alt="Tom Price 6" />
+                    </div>
+                    <div class="thumb" tabindex="0" data-src="/images/Creative-Assistant-Internship-at-Tom-Price-7.jpg" data-index="6">
+                      <img src="/images/Creative-Assistant-Internship-at-Tom-Price-7.jpg" alt="Tom Price 7" />
+                    </div>
+                    <div class="thumb" tabindex="0" data-src="/images/Creative-Assistant-Internship-at-Tom-Price-8.jpg" data-index="7">
+                      <img src="/images/Creative-Assistant-Internship-at-Tom-Price-8.jpg" alt="Tom Price 8" />
+                    </div>
+                  </div>
+                  <div class="gallery-divider" aria-hidden="true"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -331,103 +544,84 @@
       </section>
 
       <!-- CERTIFICATIONS -->
-<section>
-  <h2 class="text-text-primary mb-5">Certifications</h2>
+      <section>
+        <h2 class="text-text-primary mb-5">Certifications</h2>
 
-  <div class="space-y-4">
-    <!-- Certification item -->
-    <div class="flex flex-col sm:flex-row sm:items-start sm:gap-6">
-      <div class="text-text-tertiary w-[190px] shrink-0 mb-1 sm:mb-0">2025</div>
-      <div class="flex-1">
-        <p class="mb-3">"Advanced Design Systems" with Brad Frost from Smashing Magazine</p>
-      </div>
-    </div>
-    
-    <div class="flex flex-col sm:flex-row sm:items-start sm:gap-6">
-      <div class="text-text-tertiary w-[190px] shrink-0 mb-1 sm:mb-0">2025</div>
-      <div class="flex-1">
-        <p class="mb-3">Make Design Systems People Want to Use from Design System University</p>
-      </div>
-    </div>
+        <div class="space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:gap-6">
+            <div class="text-text-tertiary w-[190px] shrink-0 mb-1 sm:mb-0">2025</div>
+            <div class="flex-1">
+              <p class="mb-3">"Advanced Design Systems" with Brad Frost from Smashing Magazine</p>
+            </div>
+          </div>
 
-    <div class="flex flex-col sm:flex-row sm:items-start sm:gap-6">
-      <div class="text-text-tertiary w-[190px] shrink-0 mb-1 sm:mb-0">2024</div>
-      <div class="flex-1">
-        <p class="mb-3">Workshop: Design System Planning and Process with Nathan Curtis from Into Design Systems Community &&nbsp;Conference</p>
-      </div>
-    </div>
+          <div class="flex flex-col sm:flex-row sm:items-start sm:gap-6">
+            <div class="text-text-tertiary w-[190px] shrink-0 mb-1 sm:mb-0">2025</div>
+            <div class="flex-1">
+              <p class="mb-3">Make Design Systems People Want to Use from Design System University</p>
+            </div>
+          </div>
 
-    <div class="flex flex-col sm:flex-row sm:items-start sm:gap-6">
-      <div class="text-text-tertiary w-[190px] shrink-0 mb-1 sm:mb-0">2024</div>
-      <div class="flex-1">
-        <p class="mb-3">Generative AI for Everyone from DeepLearning.AI</p>
-      </div>
-    </div>
+          <div class="flex flex-col sm:flex-row sm:items-start sm:gap-6">
+            <div class="text-text-tertiary w-[190px] shrink-0 mb-1 sm:mb-0">2024</div>
+            <div class="flex-1">
+              <p class="mb-3">Workshop: Design System Planning and Process with Nathan Curtis from Into Design Systems Community &amp; Conference</p>
+            </div>
+          </div>
 
-    <div class="flex flex-col sm:flex-row sm:items-start sm:gap-6">
-      <div class="text-text-tertiary w-[190px] shrink-0 mb-1 sm:mb-0">2023</div>
-      <div class="flex-1">
-        <p class="mb-3">Advanced Product Design Tactics from Ridd, Figma&nbsp;Academy</p>
-      </div>
-    </div>
+          <div class="flex flex-col sm:flex-row sm:items-start sm:gap-6">
+            <div class="text-text-tertiary w-[190px] shrink-0 mb-1 sm:mb-0">2024</div>
+            <div class="flex-1">
+              <p class="mb-3">Generative AI for Everyone from DeepLearning.AI</p>
+            </div>
+          </div>
 
-    <div class="flex flex-col sm:flex-row sm:items-start sm:gap-6">
-      <div class="text-text-tertiary w-[190px] shrink-0 mb-1 sm:mb-0">2023</div>
-      <div class="flex-1">
-        <p class="mb-3">Scaling Design Systems from Dan Mall</p>
-      </div>
+          <div class="flex flex-col sm:flex-row sm:items-start sm:gap-6">
+            <div class="text-text-tertiary w-[190px] shrink-0 mb-1 sm:mb-0">2023</div>
+            <div class="flex-1">
+              <p class="mb-3">Advanced Product Design Tactics from Ridd, Figma&nbsp;Academy</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row sm:items-start sm:gap-6">
+            <div class="text-text-tertiary w-[190px] shrink-0 mb-1 sm:mb-0">2023</div>
+            <div class="flex-1">
+              <p class="mb-3">Scaling Design Systems from Dan Mall</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section>
+        <h2 class="text-text-primary mb-5">Education</h2>
+
+        <div class="space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:gap-6">
+            <div class="text-text-tertiary sm:w-[190px] shrink-0 mb-1 sm:mb-0">2009 — 2012</div>
+            <div class="flex-1">
+              <p class="text-text-primary leading-snug">
+                Bachelor’s Degree in Design at
+                <a href="https://www.ua.pt/" class="text-[#0066cc] hover:underline">University of Aveiro ↗</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Shared modal component for all galleries -->
+  <div id="gallery-modal" class="gallery-modal" aria-hidden="true">
+    <div class="gallery-modal__frame" role="dialog" aria-modal="true" aria-label="Image preview">
+      <button class="gallery-modal__close" id="modal-close" aria-label="Close preview">&times;</button>
+      <button class="gallery-modal__nav prev" id="modal-prev" aria-label="Previous image">&#8249;</button>
+      <img src="" alt="" class="gallery-modal__img" id="gallery-modal-img" />
+      <button class="gallery-modal__nav next" id="modal-next" aria-label="Next image">&#8250;</button>
     </div>
   </div>
-</section>
 
-<!-- EDUCATION -->
-<section>
-  <h2 class="text-text-primary mb-5">Education</h2>
-
-  <div class="space-y-4">
-    <div class="flex flex-col sm:flex-row sm:items-start sm:gap-6">
-      <div class="text-text-tertiary sm:w-[190px] shrink-0 mb-1 sm:mb-0">2009 — 2012</div>
-      <div class="flex-1">
-        <p class="text-text-primary leading-snug">
-                  Bachelor’s Degree in Design at
-                  <a href="https://www.ua.pt/" class="text-[#0066cc] hover:underline">University of Aveiro ↗</a>
-      </div>
-    </div>
-  </div>
-</section>
-      
-   <script>
-    document.getElementById("download-btn").addEventListener("click", () => {
-      const content = document.getElementById("profile-content").cloneNode(true);
-
-      content.querySelectorAll("section").forEach(section => {
-        const divs = section.querySelectorAll("div:not(:has(h2))");
-        if (divs.length > 3) divs.forEach((div, i) => i >= 3 && div.remove());
-        const lis = section.querySelectorAll("ul li");
-        if (lis.length > 3) lis.forEach((li, i) => i >= 3 && li.remove());
-      });
-
-      content.style.fontSize = "12px";
-      content.style.lineHeight = "1.3";
-      content.querySelectorAll("section").forEach(s => {
-        s.style.marginBottom = "0.9rem";
-        s.style.paddingBottom = "0.9rem";
-      });
-      content.querySelectorAll("h2").forEach(h => {
-        h.style.fontSize = "0.9rem";
-        h.style.marginBottom = "0.5rem";
-      });
-
-      const opt = {
-        margin: 0.25,
-        filename: "Daniela-Picao-Resume.pdf",
-        image: { type: "jpeg", quality: 1 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
-      };
-
-      html2pdf().from(content).set(opt).save();
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
