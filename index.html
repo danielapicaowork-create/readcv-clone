@@ -149,7 +149,7 @@
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scroll-behavior: smooth;
-      padding: 0 0.25rem;
+      padding: 0 0.25rem 0.5rem;
     }
 
     .gallery-track::-webkit-scrollbar { height: 8px; }
@@ -161,7 +161,7 @@
     .thumb {
       flex: 0 0 auto;
       width: min(280px, 45%); /* responsive thumb width, smaller on narrow screens */
-      height: 160px;
+      height: 128px;
       border-radius: 12px;
       overflow: hidden;
       background: #111;
@@ -186,14 +186,7 @@
     .thumb:focus img,
     .thumb:hover img { transform: scale(1.02); }
 
-    /* small progress / divider line like screenshot */
-    .gallery-divider {
-      position: relative;
-      height: 4px;
-      background: linear-gradient(#e6e6e6, #e6e6e6);
-      margin-top: 0.6rem;
-      border-radius: 2px;
-    }
+ 
 
     /* Modal (shared for all galleries) */
     .gallery-modal {
@@ -363,7 +356,6 @@
                       <img src="/images/Senior-Product-Designer-Design-System-at-Soldo-3.png" alt="Soldo senior 3" />
                     </div>
                   </div>
-                  <div class="gallery-divider" aria-hidden="true"></div>
                 </div>
               </div>
             </div>
@@ -399,7 +391,6 @@
                       <img src="/images/UI-Designer-and-Design-System-contributor-at-Soldo-3.png" alt="Soldo ui 3" />
                     </div>
                   </div>
-                  <div class="gallery-divider" aria-hidden="true"></div>
                 </div>
               </div>
             </div>
@@ -438,7 +429,6 @@
                       <img src="/images/UXUI-Designer-at-Play-Consulting-5.png" alt="Play 5" />
                     </div>
                   </div>
-                  <div class="gallery-divider" aria-hidden="true"></div>
                 </div>
               </div>
             </div>
@@ -534,7 +524,6 @@
                       <img src="/images/Creative-Assistant-Internship-at-Tom-Price-8.jpg" alt="Tom Price 8" />
                     </div>
                   </div>
-                  <div class="gallery-divider" aria-hidden="true"></div>
                 </div>
               </div>
             </div>
