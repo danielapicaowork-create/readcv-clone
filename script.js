@@ -125,3 +125,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === 'ArrowLeft') showPrev();
   });
 })();
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("a[href]").forEach(a => {
+      // Skip anchors that should NOT open new tabs (optional)
+      // if (a.getAttribute("href").startsWith("#")) return;
+
+      a.setAttribute("target", "_blank");
+      a.setAttribute("rel", "noopener noreferrer");
+    });
+  });
