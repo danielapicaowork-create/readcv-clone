@@ -80,6 +80,25 @@
       padding-bottom: 1.25rem;
       margin-bottom: 1.75rem;
     }
+    
+    /* Google Photos–style pulse loader */
+.skeleton {
+  position: relative;
+  background: #e6e6e6;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #e6e6e6;
+  }
+  50% {
+    background-color: #f2f2f2;
+  }
+  100% {
+    background-color: #e6e6e6;
+  }
+}
 
     /* tighten spacing between role and location lines (all blocks) */
     .text-text-primary.font-medium + .text-sm.text-text-tertiary {
