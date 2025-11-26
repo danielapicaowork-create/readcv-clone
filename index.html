@@ -257,7 +257,7 @@
       cursor: pointer;
     }
 
-/* Move navigation buttons OUTSIDE the modal frame, closer to viewport edges */
+    /* Move navigation buttons OUTSIDE the modal frame, closer to viewport edges */
 .gallery-modal__nav {
   position: fixed;          /* fixed to viewport instead of the modal frame */
   top: 50%;
@@ -280,6 +280,18 @@
 .gallery-modal__nav.next {
   right: 112px;              /* closer to page margin */
 }
+
+/* === PREVIEW MODE IMAGE STYLING (FULL VERSION) === */
+.gallery-modal__img {
+  max-width: 100%;
+  max-height: calc(100vh - 160px);
+  object-fit: contain;
+  border-radius: 12px; /* ← rounded corners for preview image */
+  display: block;
+  margin: 0 auto;
+  transition: opacity .25s ease;
+}
+
 
 /* mobile refinement */
 @media (max-width: 640px) {
