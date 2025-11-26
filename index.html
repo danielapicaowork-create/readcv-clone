@@ -257,21 +257,40 @@
       cursor: pointer;
     }
 
-    .gallery-modal__nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255,255,255,0.95);
-      border: none;
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      display: inline-grid;
-      place-items: center;
-      cursor: pointer;
-    }
-    .gallery-modal__nav.prev { left: 12px; }
-    .gallery-modal__nav.next { right: 12px; }
+/* Move navigation buttons OUTSIDE the modal frame, closer to viewport edges */
+.gallery-modal__nav {
+  position: fixed;          /* fixed to viewport instead of the modal frame */
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.95);
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: inline-grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 1300;            /* ensure above modal backdrop */
+}
+
+.gallery-modal__nav.prev {
+  left: 24px;               /* closer to page margin */
+}
+
+.gallery-modal__nav.next {
+  right: 24px;              /* closer to page margin */
+}
+
+/* mobile refinement */
+@media (max-width: 640px) {
+  .gallery-modal__nav {
+    width: 36px;
+    height: 36px;
+  }
+  .gallery-modal__nav.prev { left: 12px; }
+  .gallery-modal__nav.next { right: 12px; }
+}
+
 
     /* adapt modal for smaller screens */
     @media (max-width: 640px) {
