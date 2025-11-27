@@ -33,7 +33,7 @@
     }
   </script>
 
-  <style>
+ <style>
     /* === TYPOGRAPHY & GOLDEN RATIO READABILITY === */
     :root {
       --base-font-size: 16px;
@@ -178,7 +178,7 @@
 
     .thumb {
       flex: 0 0 auto;
-      width: min(280px, 45%); /* responsive thumb width, smaller on narrow screens */
+      width: min(280px, 45%); /* responsive thumb width */
       height: 128px;
       border-radius: 12px;
       overflow: hidden;
@@ -191,7 +191,7 @@
       position: relative;
     }
 
-    /* lazy image styling: subtle fade/blur as it loads */
+    /* lazy image styling */
     .lazy-img {
       width: 100%;
       height: 100%;
@@ -211,7 +211,7 @@
     .thumb:focus img,
     .thumb:hover img { transform: scale(1.02); }
 
-    /* Modal (shared for all galleries) */
+    /* Modal */
     .gallery-modal {
       position: fixed;
       inset: 0;
@@ -257,9 +257,8 @@
       cursor: pointer;
     }
 
-    /* Move navigation buttons OUTSIDE the modal frame, closer to viewport edges */
 .gallery-modal__nav {
-  position: fixed;          /* fixed to viewport instead of the modal frame */
+  position: fixed;
   top: 50%;
   transform: translateY(-50%);
   background: rgba(255,255,255,0.95);
@@ -270,30 +269,27 @@
   display: inline-grid;
   place-items: center;
   cursor: pointer;
-  z-index: 1300;            /* ensure above modal backdrop */
+  z-index: 1300;
 }
 
 .gallery-modal__nav.prev {
-  left: 112px;               /* closer to page margin */
+  left: 112px;
 }
 
 .gallery-modal__nav.next {
-  right: 112px;              /* closer to page margin */
+  right: 112px;
 }
 
-/* === PREVIEW MODE IMAGE STYLING (FULL VERSION) === */
 .gallery-modal__img {
   max-width: 100%;
   max-height: calc(100vh - 160px);
   object-fit: contain;
-  border-radius: 12px; /* ← rounded corners for preview image */
+  border-radius: 12px;
   display: block;
   margin: 0 auto;
   transition: opacity .25s ease;
 }
 
-
-/* mobile refinement */
 @media (max-width: 640px) {
   .gallery-modal__nav {
     width: 36px;
@@ -303,14 +299,95 @@
   .gallery-modal__nav.next { right: 12px; }
 }
 
+@media (max-width: 640px) {
+  .thumb { height: 120px; width: min(70vw, 200px); }
+  .gallery-modal__frame { border-radius: 6px; padding: 8px; }
+  .gallery-modal__nav { width: 36px; height: 36px; }
+}
 
-    /* adapt modal for smaller screens */
-    @media (max-width: 640px) {
-      .thumb { height: 120px; width: min(70vw, 200px); }
-      .gallery-modal__frame { border-radius: 6px; padding: 8px; }
-      .gallery-modal__nav { width: 36px; height: 36px; }
+
+    /* ---------------------------------------------------
+       RESPONSIVE: TABLET (≤ 900px)
+       --------------------------------------------------- */
+    @media (max-width: 900px) {
+
+      body {
+        font-size: 0.95rem;
+        line-height: 1.45;
+      }
+
+      section {
+        padding: 2rem 1.5rem !important;
+      }
+
+      h1 {
+        font-size: 2rem !important;
+      }
+
+      h2 {
+        font-size: 1.6rem !important;
+      }
+
+      .gallery-track {
+        gap: 0.7rem !important;
+      }
+
+      .thumb {
+        width: min(55%, 240px) !important;
+        height: 110px !important;
+      }
+
+      .gallery-modal__img {
+        max-width: 90vw;
+        max-height: 75vh;
+      }
     }
-  </style>
+
+
+    /* ---------------------------------------------------
+       RESPONSIVE: MOBILE (≤ 600px)
+       --------------------------------------------------- */
+    @media (max-width: 600px) {
+
+      body {
+        font-size: 0.9rem;
+      }
+
+      h1 {
+        font-size: 1.65rem !important;
+      }
+
+      h2 {
+        font-size: 1.35rem !important;
+      }
+
+      section {
+        padding: 1.7rem 1.2rem !important;
+      }
+
+      .gallery-track {
+        gap: 0.6rem !important;
+      }
+
+      .thumb {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 1 / 1 !important;
+      }
+
+      .gallery-modal__img {
+        max-width: 95vw;
+        max-height: 78vh;
+      }
+
+      button,
+      .btn {
+        padding: 0.9rem 1.2rem !important;
+        font-size: 1rem !important;
+      }
+    }
+</style>
+
 </head>
 
 <body class="bg-bg-main text-text-secondary text-base leading-relaxed">
