@@ -341,6 +341,18 @@
         max-width: 90vw;
         max-height: 75vh;
       }
+      
+      /* Ensure hero section stacks AND left-aligns */
+  .hero-section {
+    flex-direction: column;
+    align-items: flex-start;   /* ← makes image + text perfectly left aligned */
+  }
+
+  /* Keep the text container full-width and left aligned */
+  .hero-section > div {
+    width: 100%;
+    text-align: left;
+  }
     }
 
 
@@ -357,8 +369,8 @@
 
   .hero-section img {
     order: -1;               /* forces image to appear first */
-    width: 100%;
-    height: auto;
+    width: 66px !important;
+    height: 66px !important;
     object-fit: cover;
     align-self: flex-start;   /* left aligned */
   }
